@@ -1,7 +1,7 @@
 import sys
 import subprocess
 import streamlit as st
-st.set_page_config(page_title="Anna", page_icon=":hospital:", layout="wide")
+st.set_page_config(page_title="Anna", page_icon=":hospital:")
 
 @st.cache
 def install(package):
@@ -49,10 +49,7 @@ with open(MODEL_PATH,'rb') as file:
     
 # HEADER
 with st.container(): 
-    st.subheader('Good Afternoon')
-    #st.title
-    #st.write("Anna will predict which of your patients are prone to heart attack based on symptoms reported")    
-
+    st.subheader('Hello There!') 
 
 # WHAT ANNA DO
 with st.container():
