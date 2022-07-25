@@ -20,7 +20,7 @@ install('pickle-mixin')
 install('sklearn')
 install('streamlit-lottie')
 install('streamlit-aggrid')
-insgatll('requests')
+install('requests')
 
 import os
 import time
