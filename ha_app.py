@@ -31,6 +31,7 @@ from PIL import Image
 #import warnings
 #warnings.filterwarnings('ignore')
 
+from st_aggrid import AgGrid
 from streamlit_lottie import st_lottie
 from streamlit_lottie import st_lottie_spinner
 
