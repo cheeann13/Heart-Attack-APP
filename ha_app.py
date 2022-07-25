@@ -58,6 +58,8 @@ with st.container():
     with col1:
              st.subheader("Meet Anna,")
              st.title('Your Patient Monitoring Assistant')
+             st.write("##")
+             st.write("______________________________________________")
              st.subheader(
                  """
                  Anna will predict which of your patients are prone to heart attack based on symptoms reported.
@@ -69,13 +71,14 @@ with st.container():
 # THE APP             
 with st.container():    
     st.write("---")
-    st.header("My Projects")
-    st.write("##")
-    image_column, text_column = st.columns((1, 2))           
+    st.header("Try Anna")
+        
     st.subheader('Please fill in the details of the person under consideration and click on the button below!')
+    txt_col,img_col,  = st.columns((1, 2))
+    with txt_col:
     with st.form("Heart Attack Predictor App"):
-        sex =           st.selectbox("Gender: (0 = Male ; 1 = Female)", 0,1)
-        age =           st.number_input("Age in Years", 1, 150, 25, 1)
+        sex =           st.selectbox("Gender: (0 = Male ; 1 = Female)",(0,1))
+        age =           st.number_input("Age in Years", 1, 100, 25, 1)
         chol  =         st.number_input("Serum Cholestoral in mg/dl",120,430)
         thalachh =      st.slider('Maximum heart rate achieved', 50, 220, 1)
         trtbps =        st.slider('Resting Blood Pressure', 60, 122, 69, 1)
