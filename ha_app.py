@@ -83,8 +83,17 @@ with st.container():
                  """)
 
     with col2:
-             st_lottie(lottie_anna, height=600, key="anna")
-             
+        st.markdown("![Alt Text](https://assets1.lottiefiles.com/packages/lf20_l8t8exmj.json)")
+#         anna = /Users/ann131/Desktop/heart\ attack/anna-1.gif 
+#         open("/home/rzwitch/Desktop/giphy.gif", "rb")
+# contents = file_.read()
+# data_url = base64.b64encode(contents).decode("utf-8")
+# file_.close()
+
+st.markdown(
+    f'<img src="data:image/gif;base64,{data_url}" alt="cat gif">',
+    unsafe_allow_html=True,
+)
              
 # THE APP             
 with st.container():    
