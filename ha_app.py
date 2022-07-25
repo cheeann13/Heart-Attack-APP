@@ -53,7 +53,7 @@ with st.container():
 
 # WHAT ANNA DO
 with st.container():
-    st.write("---")
+
     col1, col2 = st.columns(2)
     with col1:
              st.subheader("Meet Anna,")
@@ -109,7 +109,10 @@ with st.container():
 
     with img_col:
         st.markdown("![Alt Text](https://bit.ly/anna-form)")
-        st.caption("Hold on, Anna is learning about the data"
+        st.caption("Hold on, Anna is learning about the data")
                 
-# ---- CONTACT ----
+# CONTACT
+with st.container():
+    st.write("---")
+    st.subheader('Hello!') 
 
