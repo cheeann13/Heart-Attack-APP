@@ -57,7 +57,7 @@ with st.container():
 # WHAT ANNA DO
 with st.container():
     st.write("---")
-    col1, col2 = st.columns((2,1))
+    col1, col2 = st.columns(2)
     with col1:
              st.subheader("Meet Anna,")
              st.title('Your Patient Monitoring Assistant')
@@ -78,12 +78,14 @@ with st.container():
     st.subheader('Please fill in the details of the person under consideration and click on the button below!')
     with st.form("Diabetes Predictor App"):
         age = st.number_input("Age in Years", 1, 150, 25, 1)
-        sex = st.slider("Glucose Level", 0, 200, 25, 1)
-        cp  = st.slider("Skin Thickness", 0, 99, 20, 1)
-        bloodpressure = st.slider('Blood Pressure', 0, 122, 69, 1)
+        sex = st.selectbox("Gender: (0 = Male ; 1 = Female)", 0,1)
+        chol  = st.number_input("Serum Cholestoral in mg/dl",120,430)
+        trestbps = st.slider('Resting Blood Pressure', 60, 122, 69, 1)
         insulin = st.slider("Insulin", 0, 846, 79, 1)
         bmi = st.slider("BMI", 0.0, 67.1, 31.4, 0.1)
-        dpf = st.slider("Diabetics Pedigree Function", 0.000, 2.420, 0.471, 0.001)
+        dpf = st.number_input("Diabetics Pedigree Function", 0.000, 2.420, 0.471, 0.001)
+        cp = st.selectbox('Chest Pain Type ( 0 = asymptomatic ; 1 = typical angina; 2 = atypical angina; 3 = non-anginal pain)',(0,1,2,3))
+        oldpeak = st.slider("ST depression induced by exercise relative to rest",0.0,7.0,0.8,0.1)
         row = [age, sex, cp, trtbps, chol, restecg, thalachh, exng, oldpeak, slp, caa, thall]
         
         
