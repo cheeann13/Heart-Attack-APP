@@ -58,7 +58,7 @@ with st.container():
     with col1:
              st.subheader("Meet Anna,")
              st.title('Your Patient Monitoring Assistant')
-             st.write(
+             st.subheader(
                  """
                  Anna will predict which of your patients are prone to heart attack based on symptoms reported.
                  """)
