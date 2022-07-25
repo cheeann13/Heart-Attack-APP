@@ -35,7 +35,6 @@ with open(MODEL_PATH,'rb') as file:
 with st.container(): 
     st.subheader('Hello!')
     st.write("---")
-    #st.write("##")
 
 # FRONT PAGE
 with st.container():
@@ -43,7 +42,7 @@ with st.container():
     with col1:
              st.subheader("Meet Anna,")
              st.title('Your Patient Monitoring Assistant')
-             #st.write("##")
+             st.write("##")
              st.write("______________________________________________")
              st.subheader(
                  """
@@ -95,7 +94,7 @@ with st.container():
             
     with img_col:
         st.markdown("![Alt Text](https://bit.ly/anna-form)")
-        st.write("Hold on, Anna is learning about the data...")
+        st.subheader("Hold on, Anna is learning about the data...")
         
 
 
