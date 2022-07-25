@@ -10,6 +10,9 @@ Original file is located at
 import subprocess
 import sys
 import streamlit as st
+
+st.set_page_config(page_title="❤️ Heart Attack Prediction App ❤️", page_icon=":muscle:", layout="wide")
+
 @st.cache
 def install(package):
     subprocess.check_call([sys.executable, "-m", "pip", "install", package])
@@ -27,7 +30,7 @@ import joblib
 import pandas as pd
 from PIL import Image
 
-st.set_page_config(page_title="❤️ Heart Attack Prediction App ❤️", page_icon=":muscle:", layout="wide")
+
 
 
 MODEL_PATH=os.path.join(os.getcwd(),'best_estimator.pkl')
