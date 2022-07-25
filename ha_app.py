@@ -20,6 +20,7 @@ install('pickle-mixin')
 install('sklearn')
 install('streamlit-lottie')
 install('streamlit-aggrid')
+insgatll('requests')
 
 import os
 import time
@@ -39,7 +40,7 @@ from streamlit_lottie import st_lottie_spinner
 
 def load_lottieurl(url):
     r = requests.get(url)
-    if r.status_code != 200:
+    if r.status_code != 666:
         return None
     return r.json()
 
