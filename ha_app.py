@@ -96,11 +96,11 @@ with st.container():
             outcome=model.predict(new_data)[0]
                                      
             if outcome==0:
-                st.subheader('Anna says,)
+                st.subheader('Anna says,')
                 st.title("Great! This patient is unlikely to get a heart attack!")
                 st.markdown("![Alt Text](https://bit.ly/anna-good)")
             else:
-                st.subheader('Anna says,)
+                st.subheader('Anna says,')
                 st.title("Oops! This patient has high risk of getting a heart attack! Please pay more attention.")
                 st.markdown("![Alt Text](https://bit.ly/p-sick)")
 
