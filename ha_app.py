@@ -21,32 +21,16 @@ import requests
 import numpy as np
 import pandas as pd
 from PIL import Image
-#import warnings
-#warnings.filterwarnings('ignore')
-
-from st_aggrid import AgGrid
-from streamlit_lottie import st_lottie
-from streamlit_lottie import st_lottie_spinner
-
-
-def load_lottieurl(url):
-    r = requests.get(url)
-    if r.status_code != 666:
-        return None
-    return r.json()
+import warnings
+warnings.filterwarnings('ignore')
 
 
 # MODEL LOADING
-MODEL_PATH=os.path.join(os.getcwd(),'best_estimator.pkl')
+MODEL_PATH=os.path.join(os.getcwd(),'model','best_estimator.pkl')
 
 with open(MODEL_PATH,'rb') as file:
     model=pickle.load(file)
 
-# LOAD ASSETS
-
-#img_contact_form = Image.open("images/yt_contact_form.png")
-#img_lottie_animation = Image.open("images/yt_lottie_animation.png")
-    
 # HEADER
 with st.container(): 
     st.subheader('Hello!')
@@ -95,7 +79,17 @@ with st.container():
             row = [age, sex, cp, trtbps, chol, restecg, thalachh, exng, oldpeak, slp, caa, thall]
 
             submitted = st.form_submit_button("Analyse")
-            if submitted:
+            
+    with img_col:
+        st.markdown("![Alt Text](https://bit.ly/anna-form)")
+        st.write("Hold on, Anna is learning about the data...")
+                
+# CONTACT
+with st.container():
+    st.write("---")
+    st.subheader('Hello!') 
+
+    if submitted:
                 new_data=np.expand_dims(row,axis=0)
                 outcome=model.predict(new_data)[0]
                                      
@@ -105,15 +99,7 @@ with st.container():
                     st.markdown("![Alt Text](https://bit.ly/anna-good)")
                 else:
                     st.subheader('Anna says,')
-                    st.title("Oops! This patient has high risk of getting a heart attack! Please pay more attention.")
+                    st.title("Oops! This patient has high risk of getting a heart attack!")
+                    st.subheader('Please pay more attention.') 
                     st.markdown("![Alt Text](https://bit.ly/p-sick)")
-
-    with img_col:
-        st.markdown("![Alt Text](https://bit.ly/anna-form)")
-        st.write("Hold on, Anna is learning about the data...")
-                
-# CONTACT
-with st.container():
-    st.write("---")
-    st.subheader('Hello!') 
 
