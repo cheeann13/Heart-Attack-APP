@@ -22,18 +22,18 @@ import os
 import numpy as np
 import warnings
 warnings.filterwarnings('ignore')
+import streamlit as st
+import joblib
+import pandas as pd
+from PIL import Image
+
+st.set_page_config(page_title="❤️ Heart Attack Prediction App ❤️", page_icon=":muscle:", layout="wide")
+
 
 MODEL_PATH=os.path.join(os.getcwd(),'best_estimator.pkl')
 
 with open(MODEL_PATH,'rb') as file:
     model=pickle.load(file)
-
-
-import streamlit as st
-import joblib
-import pandas as pd
-from PIL import Image
-st.set_page_config(page_title="❤️ Heart Attack Prediction App ❤️", page_icon=":muscle:", layout="wide")
 
 col1, col2 = st.columns(2)
 with col1:
