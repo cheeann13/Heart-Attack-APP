@@ -85,7 +85,7 @@ with st.container():
         caa =           st.selectbox('Number of Major Vessels (0-3) colored by flourosopy',(0,1,2,3))
         cp =            st.selectbox('Chest Pain Type ( 0 = asymptomatic ; 1 = typical angina; 2 = atypical angina; 3 = non-anginal pain)',(0,1,2,3))
         slp =           st.selectbox('The Slope of the Peak Exercise ST segment(0 = downsloping;1 = flat;2 = upsloping)',(0,1,2)) 
-        restecg =       st.selectbox('Resting Electrocardiographic Results (0 = hypertrophy;1 = normal; 2 = having ST-T wave abnormality)',(0,1,2)
+        restecg =       st.selectbox('Resting Electrocardiographic Results (0 = hypertrophy;1 = normal; 2 = having ST-T wave abnormality)',(0,1,2))
         
         row = [age, sex, cp, trtbps, chol, restecg, thalachh, exng, oldpeak, slp, caa, thall]
         
