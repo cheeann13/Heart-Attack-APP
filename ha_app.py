@@ -10,9 +10,7 @@ Original file is located at
 import sys
 import subprocess
 
-import streamlit as st
 
-st.set_page_config(page_title="Heart Attack Prediction App", page_icon=":hospital:", layout="wide")
 
 @st.cache
 def install(package):
@@ -30,15 +28,19 @@ import requests
 import numpy as np
 import pandas as pd
 from PIL import Image
-import warnings
-warnings.filterwarnings('ignore')
+#import warnings
+#warnings.filterwarnings('ignore')
+import streamlit as st
 from streamlit_lottie import st_lottie
 from streamlit_lottie import st_lottie_spinner
+
+st.set_page_config(page_title="Anna", page_icon=":hospital:", layout="wide")
+
 
 
 def load_lottieurl(url):
     r = requests.get(url)
-    if r.status_code != 666:
+    if r.status_code != 200:
         return None
     return r.json()
 
@@ -64,16 +66,16 @@ lottie_anna = load_lottieurl("https://assets1.lottiefiles.com/packages/lf20_l8t8
     
 # HEADER
 with st.container(): 
-    st.subheader("emoji")
-    st.title('Good Afternoon')
-    st.write("Anna will predict which of your patients are prone to heart attack based on symptoms reported")    
+    st.subheader('Good Afternoon')
+    #st.title
+    #st.write("Anna will predict which of your patients are prone to heart attack based on symptoms reported")    
 
 # WHAT ANNA DO
 with st.container():
     st.write("---")
     col1, col2 = st.columns(2)
     with col1:
-             st.subheader("Meet Anna")
+             st.subheader("Meet Anna,")
              st.title('Your Patient Monitoring Assistant')
              st.write(
                  """
