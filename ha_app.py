@@ -43,7 +43,7 @@ with open(MODEL_PATH,'rb') as file:
     model=pickle.load(file)
 
 # LOAD ASSETS
-lottie_anna = load_lottieurl("https://assets1.lottiefiles.com/packages/lf20_l8t8exmj.json")
+
 #img_contact_form = Image.open("images/yt_contact_form.png")
 #img_lottie_animation = Image.open("images/yt_lottie_animation.png")
     
@@ -53,8 +53,7 @@ with st.container():
     #st.title
     #st.write("Anna will predict which of your patients are prone to heart attack based on symptoms reported")    
 
-    
-ANNA_PATH=os.path.join(os.getcwd(),"anna-1.gif")
+
 # WHAT ANNA DO
 with st.container():
     st.write("---")
@@ -68,7 +67,7 @@ with st.container():
                  """)
 
     with col2:
-             st.markdown("![Alt Text](https://bit.ly/3RVuBxU)")
+             st.markdown("![Alt Text](https://bit.ly/anna-find)")
              
 # THE APP             
 with st.container():    
