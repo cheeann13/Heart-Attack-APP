@@ -51,8 +51,7 @@ with col2:
         bmi = st.slider("BMI", 0.0, 67.1, 31.4, 0.1)
         dpf = st.slider("Diabetics Pedigree Function", 0.000, 2.420, 0.471, 0.001)
         row = [age, sex, cp, trtbps, chol, restecg, thalachh, exng, oldpeak, slp, caa, thall]
-        # Every form must have a submit button.
-        
+
         submitted = st.form_submit_button("Analyse")
         if submitted:
             new_data=np.expand_dims(row,axis=0)
