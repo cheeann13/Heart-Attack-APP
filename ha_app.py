@@ -7,6 +7,16 @@ Original file is located at
     https://colab.research.google.com/drive/1DNRdEEb7DSgXnHHflnskrAJ0NcKapzGi
 """
 
+import subprocess
+import sys
+import streamlit as st
+@st.cache
+def install(package):
+    subprocess.check_call([sys.executable, "-m", "pip", "install", package])
+    
+install('pickle-mixin')
+install('sklearn')
+
 import pickle
 import os
 import numpy as np
@@ -16,8 +26,8 @@ warnings.filterwarnings('ignore')
 MODEL_PATH=os.path.join(os.getcwd(),'best_estimator.pkl')
 
 with open(MODEL_PATH,'rb') as file:
-    model=pickle.load(file)
-#%%# new_data=[106,72,100,40,36.6,0.178,45]# print(model.predict(np.expand_dims(new_data,axis=0)))#%%
+    model=pickle.load(file)
+
 
 import streamlit as st
 import joblib
