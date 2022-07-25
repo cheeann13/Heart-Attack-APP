@@ -33,11 +33,11 @@ import streamlit as st
 import joblib
 import pandas as pd
 from PIL import Image
-st.set_page_config(page_title="Diabetes Prediction App", page_icon=":muscle:", layout="wide")
+st.set_page_config(page_title="❤️ Heart Attack Prediction App ❤️", page_icon=":muscle:", layout="wide")
 
 col1, col2 = st.columns(2)
 with col1:
-    st.title('❤️ Heart Attack Prediction App ❤️')
+    st.title('Heart Attack Prediction App')
     st.write("Input your information and let's find out is the patient prones to heart attack.")
 
 with col2:
