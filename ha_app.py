@@ -26,7 +26,7 @@ warnings.filterwarnings('ignore')
 
 
 # MODEL LOADING
-MODEL_PATH=os.path.join(os.getcwd(),'model','best_estimator.pkl')
+MODEL_PATH=os.path.join(os.getcwd(),'model','model.pkl')
 
 with open(MODEL_PATH,'rb') as file:
     model=pickle.load(file)
