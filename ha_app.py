@@ -54,7 +54,7 @@ with col2:
         
         
         submitted = st.form_submit_button("Analyse")
-        if submitted:
+        if submitted:
             new_data=np.expand_dims(row,axis=0)
             outcome=model.predict(new_data)[0]
             if outcome==0:
@@ -62,6 +62,6 @@ with col2:
                 image = Image.open('healthy.png')
                 st.image(image)
             else:
-            st.subheader('From our database, you are not healthy so go work yourself out!')
-            image1 = Image.open('nothealthy.png')
-            st.image(image1
+                st.subheader('From our database, you are not healthy so go work yourself out!')
+                image1 = Image.open('nothealthy.png')
+                st.image(image1
