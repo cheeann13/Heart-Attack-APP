@@ -33,7 +33,7 @@ import streamlit as st
 import joblib
 import pandas as pd
 from PIL import Image
-st.set_page_config( page_title="Diabetes Prediction App", page_icon=":muscle:", layout="wide")
+st.set_page_config(page_title="Diabetes Prediction App", page_icon=":muscle:", layout="wide")
 
 col1, col2 = st.columns(2)
 with col1:
