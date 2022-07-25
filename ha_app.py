@@ -39,8 +39,7 @@ col1, col2 = st.columns(2)
 with col1:
     st.title('❤️ Heart Attack Prediction App ❤️')
     st.write("Input your information and let's find out is the patient prones to heart attack.")
-    my_expander = st.expander(label='The Awesome Team Behind This App')
-    with my_expander:'Intan, Chee Ann, Dinie, N, Warren(Not a real name)!'    
+
 with col2:
     st.subheader('Please fill in the details of the person under consideration and click on the button below!')
     with st.form("Diabetes Predictor App"):
