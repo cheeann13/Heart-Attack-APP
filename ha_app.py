@@ -9,8 +9,8 @@ Original file is located at
 
 import sys
 import subprocess
-
-
+import streamlit as st
+st.set_page_config(page_title="Anna", page_icon=":hospital:", layout="wide")
 
 @st.cache
 def install(package):
@@ -30,12 +30,9 @@ import pandas as pd
 from PIL import Image
 #import warnings
 #warnings.filterwarnings('ignore')
-import streamlit as st
+
 from streamlit_lottie import st_lottie
 from streamlit_lottie import st_lottie_spinner
-
-st.set_page_config(page_title="Anna", page_icon=":hospital:", layout="wide")
-
 
 
 def load_lottieurl(url):
