@@ -7,8 +7,10 @@ Original file is located at
     https://colab.research.google.com/drive/1DNRdEEb7DSgXnHHflnskrAJ0NcKapzGi
 """
 
-import subprocess
 import sys
+import requests
+import subprocess
+
 import streamlit as st
 from streamlit_lottie import st_lottie
 
