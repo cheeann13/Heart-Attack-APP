@@ -43,14 +43,14 @@ with col1:
 with col2:
     st.subheader('Please fill in the details of the person under consideration and click on the button below!')
     with st.form("Diabetes Predictor App"):
-        age =           st.number_input("Age in Years", 1, 150, 25, 1)
-        sex =           st.slider("Glucose Level", 0, 200, 25, 1)
-        cp  =           st.slider("Skin Thickness", 0, 99, 20, 1)
-        bloodpressure = st.slider('Blood Pressure', 0, 122, 69, 1)
-        insulin =       st.slider("Insulin", 0, 846, 79, 1)
-        bmi =           st.slider("BMI", 0.0, 67.1, 31.4, 0.1)
-        dpf =           st.slider("Diabetics Pedigree Function", 0.000, 2.420, 0.471, 0.001)
-        row = [age, sex, cp, trtbps, chol, restecg, thalachh, exng, oldpeak, slp, caa, thall]
+        age =           st.number_input("Age in Years", 1, 150, 25, 1)
+        sex =           st.slider("Glucose Level", 0, 200, 25, 1)
+        cp  =           st.slider("Skin Thickness", 0, 99, 20, 1)
+        bloodpressure = st.slider('Blood Pressure', 0, 122, 69, 1)
+        insulin =       st.slider("Insulin", 0, 846, 79, 1)
+        bmi =           st.slider("BMI", 0.0, 67.1, 31.4, 0.1)
+        dpf =           st.slider("Diabetics Pedigree Function", 0.000, 2.420, 0.471, 0.001)
+        row = [age, sex, cp, trtbps, chol, restecg, thalachh, exng, oldpeak, slp, caa, thall]
         # Every form must have a submit button.
         submitted = st.form_submit_button("Analyse")
         if submitted:
