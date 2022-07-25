@@ -8,11 +8,9 @@ Original file is located at
 """
 
 import sys
-import requests
 import subprocess
 
 import streamlit as st
-from streamlit_lottie import st_lottie
 
 st.set_page_config(page_title="Heart Attack Prediction App", page_icon=":hospital:", layout="wide")
 
@@ -22,15 +20,20 @@ def install(package):
     
 install('pickle-mixin')
 install('sklearn')
+install('streamlit-lottie')
 
 import os
+import time
 import pickle
 import joblib
+import requests
 import numpy as np
 import pandas as pd
 from PIL import Image
 import warnings
 warnings.filterwarnings('ignore')
+from streamlit_lottie import st_lottie
+from streamlit_lottie import st_lottie_spinner
 
 
 def load_lottieurl(url):
