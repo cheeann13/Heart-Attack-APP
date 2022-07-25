@@ -79,17 +79,7 @@ with st.container():
             row = [age, sex, cp, trtbps, chol, restecg, thalachh, exng, oldpeak, slp, caa, thall]
 
             submitted = st.form_submit_button("Analyse")
-            
-    with img_col:
-        st.markdown("![Alt Text](https://bit.ly/anna-form)")
-        st.write("Hold on, Anna is learning about the data...")
-                
-# CONTACT
-with st.container():
-    st.write("---")
-    st.subheader('Hello!') 
-
-    if submitted:
+            if submitted:
                 new_data=np.expand_dims(row,axis=0)
                 outcome=model.predict(new_data)[0]
                                      
@@ -102,4 +92,17 @@ with st.container():
                     st.title("Oops! This patient has high risk of getting a heart attack!")
                     st.subheader('Please pay more attention.') 
                     st.markdown("![Alt Text](https://bit.ly/p-sick)")
+            
+    with img_col:
+        st.markdown("![Alt Text](https://bit.ly/anna-form)")
+        st.write("Hold on, Anna is learning about the data...")
+        
+
+
+                
+# CONTACT
+with st.container():
+    st.write("---")
+    st.subheader('Hello!') 
+
 
