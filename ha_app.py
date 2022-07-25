@@ -51,7 +51,7 @@ with open(MODEL_PATH,'rb') as file:
 with st.container(): 
     st.subheader('Hello!')
     st.write("---")
-    st.write("##")
+    #st.write("##")
 
 # FRONT PAGE
 with st.container():
@@ -74,16 +74,16 @@ with st.container():
     st.write("---")
     st.header("Try Anna")
         
-    st.subheader('Please fill in the details of the person under consideration and click on the button below!')
-    txt_col,img_col,  = st.columns((1, 2))
+    st.subheader('Please fill in the details of the patient and click on the button below!')
+    txt_col,img_col,  = st.columns(2)
 
     with txt_col:
         with st.form("Heart Attack Predictor App"):
             sex =           st.selectbox("Gender: (0 = Male ; 1 = Female)",(0,1))
             age =           st.number_input("Age in Years", 1, 100, 25, 1)
-            chol  =         st.number_input("Serum Cholestoral in mg/dl",120,430)
-            thalachh =      st.slider('Maximum heart rate achieved', 50, 220, 1)
-            trtbps =        st.slider('Resting Blood Pressure', 60, 122, 69, 1)
+            chol  =         st.number_input("Serum Cholestoral in mg/dl",120, 430)
+            thalachh =      st.slider('Maximum Heart Rate Achieved', 50, 220, 120, 1)
+            trtbps =        st.slider('Resting Blood Pressure', 90, 200, 69, 1)
             oldpeak =       st.slider('ST Depression Induced by Exercise Relative to Rest', 0.0, 10.0, 0.01)
             exng =          st.selectbox('Exercise Induced Angina (1 = yes; 0 = no)',(0,1))
             thall =         st.selectbox('Thallium Stress Test(2 = normal; 1 = fixed defect; 3 = reversable defect)',(1,2,3))
@@ -110,7 +110,7 @@ with st.container():
 
     with img_col:
         st.markdown("![Alt Text](https://bit.ly/anna-form)")
-        st.caption("Hold on, Anna is learning about the data")
+        st.write("Hold on, Anna is learning about the data...")
                 
 # CONTACT
 with st.container():
