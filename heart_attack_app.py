@@ -102,6 +102,4 @@ with st.container():
 # CONTACT
 with st.container():
     st.write("---")
-    st.subheader('Hello!') 
-
 
