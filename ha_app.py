@@ -93,11 +93,10 @@ with st.container():
 
             row = [age, sex, cp, trtbps, chol, restecg, thalachh, exng, oldpeak, slp, caa, thall]
 
-
             submitted = st.form_submit_button("Analyse")
-                if submitted:
-                    new_data=np.expand_dims(row,axis=0)
-                    outcome=model.predict(new_data)[0]
+            if submitted:
+                new_data=np.expand_dims(row,axis=0)
+                outcome=model.predict(new_data)[0]
                                      
                 if outcome==0:
                     st.subheader('Anna says,')
