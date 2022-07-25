@@ -49,16 +49,17 @@ with open(MODEL_PATH,'rb') as file:
     
 # HEADER
 with st.container(): 
-    st.subheader('Hello!') 
+    st.subheader('Hello!')
+    st.write("---")
+    st.write("##")
 
-# WHAT ANNA DO
+# FRONT PAGE
 with st.container():
-
     col1, col2 = st.columns(2)
     with col1:
              st.subheader("Meet Anna,")
              st.title('Your Patient Monitoring Assistant')
-             st.write("##")
+             #st.write("##")
              st.write("______________________________________________")
              st.subheader(
                  """
