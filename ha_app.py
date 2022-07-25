@@ -42,14 +42,6 @@ MODEL_PATH=os.path.join(os.getcwd(),'best_estimator.pkl')
 with open(MODEL_PATH,'rb') as file:
     model=pickle.load(file)
 
-    
-Use local CSS
-def local_css(file_name):
-   with open(file_name) as f:
-       st.markdown(f"<style>{f.read()}</style>", unsafe_allow_html=True)
-
-local_css("style/style.css")
-
 # LOAD ASSETS
 lottie_anna = load_lottieurl("https://assets1.lottiefiles.com/packages/lf20_l8t8exmj.json")
 #img_contact_form = Image.open("images/yt_contact_form.png")
