@@ -60,8 +60,8 @@ def cramers_corrected_stat(confusion_matrix):
 
 # constants 
 ## clean path!
-CSV_PATH = os.path.join(os.getcwd(),'heart.csv')
-BEST_ESTIMATOR_SAVE_PATH=os.path.join(os.getcwd(),'best_estimator.pkl')
+CSV_PATH = os.path.join(os.getcwd(),'dataset','heart.csv')
+MODEL_PATH = os.path.join(os.getcwd(),'model','model.pkl')
 
 def plot_con_graph(con_col,df,c):
   '''
@@ -98,56 +98,43 @@ df.head()
 
 df.describe().T
 
-"""Notes:
-set:
-caa : 4 = null
-thal : 0 = null
-"""
-
 df.nunique()
 
 #checking for missing values
 df.isna().sum()
 
-"""Obervation:
+"""# 2) Data Vizualization"""
 
-1. Age is measured in days, we might wanna convert that to year for eda, and check/drop cvd babies?
-2. bmi can be added since obesity is (highly) corelated to CVD
-
-# 2) Data Vizualization
-"""
-
+#separating catagorical and continuos columns
 con = ['age','trtbps','chol','thalachh','oldpeak']
 cat = df.drop(labels=con, axis=1).columns
 
-custom = ['#FEBB9A','#B3D9FF', '#E3F8B9','#FFC0E7','#A9F3FF','#DFD8D1']
+#custom = ['#FEBB9A','#B3D9FF', '#E3F8B9','#FFC0E7','#A9F3FF','#DFD8D1']
 
 for i in cat:
   plt.figure()
-  sns.countplot(df[i], palette= custom) 
+  sns.countplot(df[i], palette= 'Pastel2') 
   plt.show()
 
-"""Notes:
-slightly imbalance dataset, but acceptable
+"""Observation:
+1. Slightly imbalance dataset, but acceptable
+
 """
 
 df.groupby(['sex','output']).agg({'output':'count'}).plot(kind='bar',color= '#FEBB9A')
-# df.groupby(['sex','alco']).agg({'alco':'count'}).plot(kind='bar',color= '#E3F8B9')
-# df.groupby(['sex','smoke']).agg({'smoke':'count'}).plot(kind='bar',color= '#FFC0E7')
-# df.groupby(['sex','active']).agg({'active':'count'}).plot(kind='bar',color= '#A9F3FF')
 
 # 1: Male 0:Female
 
-plot_con_graph(con,df,'c')
+plot_con_graph(con,df,'#E3F8B9')
 
-df.boxplot(figsize=(11,7))
+df.boxplot(figsize=(10,6))
 
 df.describe().T
 
 """Observation:
-1. age range focuses on 29-77 
-2. thall & caa hahave some hidden null data
-3. one outlier in chol
+1. Age ranges 29-77 
+2. thall & caa hahave some hidden null data, thall 0 = null; caa 4 = null
+3. One outlier in chol to be handled
 
 # 3) Data Cleaning
 1. Outliers
@@ -158,7 +145,6 @@ df.describe().T
 1. Clip the only outliers from chol col
 """
 
-#METHOD 2: clipping the outliers
 #clipping data with realistic blood pressures
 df['chol'] = df['chol'].clip(126,430)
 
@@ -173,10 +159,11 @@ df.boxplot(figsize=(10,6))
 
 df.query('thall == 0 or caa == 4')
 
-"""We have 7 data with positive outputs.
-Since we have a really small datasets, we might want to make fill the datasets by the output. 
-- to improve the performance
-- drop it for the first round
+"""Notes:
+- We have a total of 7 entries with invalid inputs of thall and caa columns,
+- We have 5 data with positive outputs.
+- Since we have a really small datasets, we need to be ccareful of any imputation as it might skew the datasets from it's actual distribution.
+- We're dropping the rows with invalid data for now.
 """
 
 df.drop(df.query('thall == 0 or caa == 4').index,axis=0,inplace=True)
@@ -196,9 +183,7 @@ df.describe().T
 """##3.3 Droping Duplicates"""
 
 df.duplicated().sum()
-
-df.describe().T
-#clean datasets of 296 entries
+#no duplicate data
 
 """# 4) Features Selection"""
 
@@ -209,8 +194,6 @@ for i in cat:
     matrix = pd.crosstab(df[i],df['output']).to_numpy()
     print(cramers_corrected_stat(matrix))
 
-#only cholesterol has correlation with CVD
-
 for i in con:
     print(i)
     lr=LogisticRegression()
@@ -220,11 +203,6 @@ for i in con:
 #checking why fbs output = 0
 display(df.groupby('fbs')['fbs'].size())
 
-"""Observation from EDA:
-1. oldpeak, age, trrtbps, chol has high accuracy
-2. 
-"""
-
 fig = plt.figure(figsize=(6,6))
 gs = fig.add_gridspec(1,1)
 gs.update(wspace=0.3, hspace=0.15)
@@ -233,18 +211,20 @@ ax0 = fig.add_subplot(gs[0,0])
 df_corr = df[con].corr().transpose()
 
 mask = np.triu(np.ones_like(df_corr))
-ax0.text(1.5,-0.1,"Correlation Matrix",fontsize=22, fontweight='bold', fontfamily='serif', color="#000000")
+ax0.text(1.5,-0.1,"Correlation Matrix",fontsize=14, fontfamily='serif', color="#696969")
 df_corr = df[con].corr().transpose()
-sns.heatmap(df_corr,mask=mask,fmt=".1f",annot=True,cmap='coolwarm')
+sns.heatmap(df_corr,mask=mask,fmt=".2f",annot=True,cmap='coolwarm')
 plt.show()
 
 """# 5) Pre-processing"""
 
 #select features that has the highest coleration
-X = df.drop(['output'],axis=1)
+X = df.drop(['output','fbs'],axis=1)
 y = df['output']
 
 X_train, X_test, y_train, y_test = train_test_split(X,y,test_size=0.3,random_state=413)
+
+X.columns
 
 """# 6) Model Development"""
 
@@ -332,17 +312,13 @@ for i, model in enumerate(pipelines):
 print('The best scaling approach for Cardiovascular Disease Prediction is {} with the accuracy of {}'.
       format(best_pipeline,best_score))
 
-print(pipe_dict)
-#print(pipe_dict.keys(2)) duh! can't access key by index
-
 """# Model Comparison Table"""
 
-#model comparison tables
 model_comparison_df = pd.DataFrame.from_dict(pipe_dict).T
 model_comparison_df.columns = ['Accuracy', 'F1 Score']
-model_comparison_df = model_comparison_df.sort_values('F1 Score', ascending=False)
-model_comparison_df.style.background_gradient(cmap='coolwarm')
-#model_comparison_df.sort_values(by='F1 Score',ascending=False).style.highlight_max()
+#model_comparison_df = model_comparison_df.sort_values('F1 Score', ascending=False)
+#model_comparison_df.style.background_gradient(cmap='coolwarm')
+model_comparison_df.sort_values(by='F1 Score',ascending=False).style.highlight_max()
 
 """
 ### Gridsearch cv
@@ -391,9 +367,8 @@ plt.show()
 print(classification_report)
 
 #saving the best model
-BEST_ESTIMATOR_SAVE_PATH= os.path.join(os.getcwd(),'best_estimator.pkl')
 
-with open(BEST_ESTIMATOR_SAVE_PATH, 'wb') as file:
+with open(MODEL_PATH, 'wb') as file:
     pickle.dump(grid.best_estimator_,file)
 
 """**Zip and download from Colab**"""
@@ -403,51 +378,3 @@ with open(BEST_ESTIMATOR_SAVE_PATH, 'wb') as file:
 from google.colab import files
 files.download("/content/heart.zip")
 
-"""# 7 Streamlit
-
-Writing app.py file
-"""
-
-# Commented out IPython magic to ensure Python compatibility.
-# %%writefile app.py
-# 
-# import os
-# import pickle
-# import numpy as np
-# import streamlit as st
-# import pandas as pd
-# 
-# 
-# #%% deployment
-# MODEL_PATH = os.path.join(os.getcwd(),'best_estimator.pkl')
-# 
-# with open(MODEL_PATH,'rb') as file:
-#     model = pickle.load(file)
-# 
-# # Cholesterol 1,2,3
-# # ap_hi : 
-# # ap_lo
-# # new_data = [cholesterol,ap_hi,ap_lo]
-# # new_data = np.expand_dims([2,200,110],axis=0)
-# # outcome = model.predict(new_data)[0]
-# 
-# 
-# with st.form("Heart Attack Predictor App"):
-#     chol = st.selectbox('Cholesterol Level: 1: normal, 2: above normal, 3: well above normal', (1,2,3))
-#     sys = st.number_input('Systolic BP')
-#     dia = st.number_input('Diastolic BP')
-# 
-#     # Every form must have a submit button.
-#     submitted = st.form_submit_button("Submit")
-#     if submitted:
-#         new_data = np.expand_dims([chol,sys,dia],axis=0)
-#         outcome = model.predict(new_data)[0]
-#         
-#         if outcome == 0:
-#             st.write('Congrats you are healthy, keep it up')
-#             st.balloons()
-#         else:
-#             st.write('Start Exercising now!!!')
-#             st.snow()
-# 
-#
