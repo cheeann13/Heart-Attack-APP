@@ -70,6 +70,8 @@ with st.container():
     #st.title
     #st.write("Anna will predict which of your patients are prone to heart attack based on symptoms reported")    
 
+    
+ANNA_PATH=os.path.join(os.getcwd(),"anna-1.gif")
 # WHAT ANNA DO
 with st.container():
     st.write("---")
@@ -84,13 +86,13 @@ with st.container():
 
     with col2:
              #st.markdown("![Alt Text](https://assets1.lottiefiles.com/packages/lf20_l8t8exmj.json)")
-             anna = open("anna-1.gif","rb") 
+             anna = open(ANNA_PATH,"rb") 
              contents = file_.read()
              data_url = base64.b64encode(contents).decode("utf-8")
              file_.close()
 
              st.markdown(
-                f'<img src="data:image/gif;base64,{data_url}" alt="cat gif">',
+                f'<img src="data:image/gif;base64,{data_url}" alt="anna-1.gif">',
                 unsafe_allow_html=True,
              )
              
