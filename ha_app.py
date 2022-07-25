@@ -64,4 +64,4 @@ with col2:
             else:
                 st.subheader('From our database, you are not healthy so go work yourself out!')
                 image1 = Image.open('nothealthy.png')
-                st.image(image1
+                st.image(image1)
