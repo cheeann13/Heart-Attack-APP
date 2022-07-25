@@ -10,8 +10,9 @@ Original file is located at
 import subprocess
 import sys
 import streamlit as st
+from streamlit_lottie import st_lottie
 
-st.set_page_config(page_title="❤️ Heart Attack Prediction App ❤️", page_icon=":muscle:", layout="wide")
+st.set_page_config(page_title="Heart Attack Prediction App", page_icon=":hospital:", layout="wide")
 
 @st.cache
 def install(package):
@@ -20,30 +21,70 @@ def install(package):
 install('pickle-mixin')
 install('sklearn')
 
-import pickle
 import os
-import numpy as np
-import warnings
-warnings.filterwarnings('ignore')
-import streamlit as st
+import pickle
 import joblib
+import numpy as np
 import pandas as pd
 from PIL import Image
+import warnings
+warnings.filterwarnings('ignore')
 
 
+def load_lottieurl(url):
+    r = requests.get(url)
+    if r.status_code != 666:
+        return None
+    return r.json()
 
 
+# MODEL LOADING
 MODEL_PATH=os.path.join(os.getcwd(),'best_estimator.pkl')
 
 with open(MODEL_PATH,'rb') as file:
     model=pickle.load(file)
 
-col1, col2 = st.columns(2)
-with col1:
-    st.title('Heart Attack Prediction App')
-    st.write("Input your information and let's find out is the patient prones to heart attack.")
+    
+# Use local CSS
+def local_css(file_name):
+    with open(file_name) as f:
+        st.markdown(f"<style>{f.read()}</style>", unsafe_allow_html=True)
 
-with col2:
+local_css("style/style.css")
+
+# LOAD ASSETS
+lottie_anna = load_lottieurl("https://assets1.lottiefiles.com/packages/lf20_l8t8exmj.json")
+img_contact_form = Image.open("images/yt_contact_form.png")
+img_lottie_animation = Image.open("images/yt_lottie_animation.png")
+    
+# HEADER
+with st.container(): 
+    st.subheader("emoji")
+    st.title('Good Afternoon')
+    st.write("Anna will predict which of your patients are prone to heart attack based on symptoms reported")    
+
+# WHAT ANNA DO
+with st.container():
+    st.write("---")
+    col1, col2 = st.columns(2)
+    with col1:
+             st.subheader("Meet Anna")
+             st.title('Your Patient Monitoring Assistant')
+             st.write(
+                 """
+                 Anna will predict which of your patients are prone to heart attack based on symptoms reported.
+                 """)
+
+    with col2:
+             st_lottie(lottie_anna, height=600, key="anna")
+             
+             
+# THE APP             
+with st.container():    
+    st.write("---")
+    st.header("My Projects")
+    st.write("##")
+    image_column, text_column = st.columns((1, 2))           
     st.subheader('Please fill in the details of the person under consideration and click on the button below!')
     with st.form("Diabetes Predictor App"):
         age = st.number_input("Age in Years", 1, 150, 25, 1)
@@ -65,6 +106,6 @@ with col2:
                 image = Image.open('healthy.png')
                 st.image(image)
             else:
-                st.subheader('From our database, you are not healthy so go work yourself out!')
+                st.subheader('High Risk!')
                 image1 = Image.open('nothealthy.png')
                 st.image(image1)
