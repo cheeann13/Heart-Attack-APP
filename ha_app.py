@@ -76,9 +76,7 @@ with st.container():
                  """)
 
     with col2:
-             #st.markdown("![Alt Text](https://assets1.lottiefiles.com/packages/lf20_l8t8exmj.json)")
-             st.markdown("![Alt Text](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/dfd45871-ea4f-4421-9831-720fc5fc52ad/anna-1.gif?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20220725%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20220725T093513Z&X-Amz-Expires=86400&X-Amz-Signature=dd904d939425dd8698decfc371d6248c9e2192d491e2b76ab0dae3e19925dabc&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22anna-1.gif%22&x-id=GetObject)")
-             
+             st.markdown("![Alt Text](https://bit.ly/3RVuBxU)")
              
 # THE APP             
 with st.container():    
