@@ -84,7 +84,7 @@ with st.container():
 
     with col2:
              #st.markdown("![Alt Text](https://assets1.lottiefiles.com/packages/lf20_l8t8exmj.json)")
-             anna = open("/Users/ann131/Desktop/heart\ attack/anna-1.gif","rb") 
+             anna = open("anna-1.gif","rb") 
              contents = file_.read()
              data_url = base64.b64encode(contents).decode("utf-8")
              file_.close()
