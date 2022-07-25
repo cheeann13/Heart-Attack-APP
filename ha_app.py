@@ -19,6 +19,7 @@ def install(package):
 install('pickle-mixin')
 install('sklearn')
 install('streamlit-lottie')
+install('streamlit-aggrid')
 
 import os
 import time
