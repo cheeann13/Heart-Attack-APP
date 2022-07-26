@@ -5,7 +5,7 @@
 # Problem Statement
 Given a very small dataset (303 entries), could we build and train a good enough model that predicts patients with a high risk of getting a heart attack, and aids clinicians in providing earlier intervention? 
 
-# Data Cleaning
+# Invalid Inputs in Small Dataset
 ![image](https://user-images.githubusercontent.com/29735171/180817326-95a4d5d0-358d-4dc4-9fea-af3e5df8941e.png)
 
 Oops! Somebody made a mistake while collecting data, and we have some invalid inputs in 7 of the entries.
