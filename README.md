@@ -29,8 +29,8 @@ It's not too bad with the limited dataset! We are ready to build an app.
 <img width="1388" alt="Screenshot 2022-07-25 at 10 47 25 PM" src="https://user-images.githubusercontent.com/29735171/180819917-c92d65ab-0e5f-4c83-9fe8-e31bad572f66.png">
 
 
-# Why Some Mistakes Are More Costly Than The Others? 
-Clinicians are not that easily convinced, they need more proof before they could use our app for references.
+# Why Some Mistakes Are Costlier Than The Others? 
+Clinicians are not that easily convinced, they need more proof before they can use our app for references.
 They also raised an important point that it would be catastrophic if our app falsely marks high-risk patients as no risk, giving both parties a false sense of security and no treatment is given to the patient until it is too late.
 
 # Performance Evaluation
